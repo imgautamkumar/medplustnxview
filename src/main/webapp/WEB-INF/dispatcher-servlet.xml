@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="error"></property>
+	</bean>
+	<bean id="accountStatementValidator"
+		class="com.medplus.validator.AccountStatementValidator"></bean>
+
+	<bean id="accountStatementFormController"
+		class="com.medplus.controller.AccountStatementFormController">
+		<property name="commandClass"
+			value="com.medplus.command.AccountStatementCommand"></property>
+		<property name="commandName" value="accountStatementCommand"></property>
+		<property name="validator" ref="accountStatementValidator"></property>
+		<property name="formView" value="account-statement"></property>
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/account-statement.htm">accountStatementFormController</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="1"></property>
+	</bean>
+	<bean id="account-statement-pdf"
+		class="com.medplus.view.AccountStatementPdfView" />
+	<bean id="account-statement-xls"
+		class="com.medplus.view.AccountStatementXlsView" />
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/"></property>
+		<property name="suffix" value=".jsp"></property>
+		<property name="order" value="2"></property>
+	</bean>
+
+</beans>
