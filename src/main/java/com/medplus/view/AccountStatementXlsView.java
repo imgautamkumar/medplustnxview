@@ -14,35 +14,35 @@ import org.springframework.web.servlet.view.document.AbstractExcelView;
 
 import com.medplus.dto.AccountStatementDto;
 
-public class AccountStatementXlsView extends AbstractExcelView{
+public class AccountStatementXlsView extends AbstractExcelView {
 
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void buildExcelDocument(Map<String, Object> model, HSSFWorkbook workbook, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		List<AccountStatementDto> statements=null;
-		HSSFSheet sheet=workbook.createSheet("statement");
-		statements=(List<AccountStatementDto>) model.get("statements");
-		HSSFRow row=null;
-		HSSFCell cell=null;
-		for(int i=1;i<statements.size();i++) {
-			
-			row=sheet.createRow(i);
-			cell=row.createCell(1);
+		List<AccountStatementDto> statements = null;
+		HSSFSheet sheet = workbook.createSheet("statement");
+		statements = (List<AccountStatementDto>) model.get("statements");
+		HSSFRow row = null;
+		HSSFCell cell = null;
+		for (int i = 1; i < statements.size(); i++) {
+
+			row = sheet.createRow(i);
+			cell = row.createCell(1);
 			cell.setCellValue(statements.get(i).getTxNo());
-			cell=row.createCell(2);
+			cell = row.createCell(2);
 			cell.setCellValue(statements.get(i).getTransactionDate());
-			cell=row.createCell(3);
+			cell = row.createCell(3);
 			cell.setCellValue(statements.get(i).getRemarks());
-			cell=row.createCell(4);
+			cell = row.createCell(4);
 			cell.setCellValue(statements.get(i).getDebit());
-			cell=row.createCell(5);
+			cell = row.createCell(5);
 			cell.setCellValue(statements.get(i).getCredit());
-			cell=row.createCell(6);
+			cell = row.createCell(6);
 			cell.setCellValue(statements.get(i).getAvailableBalance());
-			
+
 		}
-		
+
 	}
-		
+
 }

@@ -57,7 +57,6 @@
 
 			</table>
 		</div>
-
 	</c:if>
 
 	<script language="javascript">
