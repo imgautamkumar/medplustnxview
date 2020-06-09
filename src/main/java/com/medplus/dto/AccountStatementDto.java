@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class AccountStatementDto implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	protected int txNo;
 	protected Date transactionDate;
 	protected String remarks;
