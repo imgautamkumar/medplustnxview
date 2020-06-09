@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.SimpleFormController;
 import com.medplus.command.AccountStatementCommand;
 import com.medplus.dto.AccountStatementDto;
 
+@SuppressWarnings("deprecation")
 public class AccountStatementFormController extends SimpleFormController {
 
 	@Override

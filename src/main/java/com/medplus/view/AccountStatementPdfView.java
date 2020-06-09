@@ -16,6 +16,7 @@ import com.medplus.dto.AccountStatementDto;
 
 public class AccountStatementPdfView extends AbstractPdfView{
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
