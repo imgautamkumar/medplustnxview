@@ -22,10 +22,9 @@ public class MedplusWebApplicationInitializer implements WebApplicationInitializ
 		XmlWebApplicationContext servletApplicationContext = new XmlWebApplicationContext();
 		servletApplicationContext.setConfigLocation("/WEB-INF/dispatcher-servlet.xml");
 		DispatcherServlet dispatcherServlet = new DispatcherServlet(servletApplicationContext);
-		ServletRegistration.Dynamic dynamic=servletContext.addServlet("dispatcher", dispatcherServlet);
+		ServletRegistration.Dynamic dynamic = servletContext.addServlet("dispatcher", dispatcherServlet);
 		dynamic.addMapping("*.htm");
 		dynamic.setLoadOnStartup(2);
 
 	}
-
 }
